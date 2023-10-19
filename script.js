@@ -42,26 +42,11 @@ const gramos = [    505,
 
 /* console.table(galletas) */
 
-
+console.log("\n Lista de Galletas:");
 console.log("%c|    Galletas   |  Unidades x Pack | Precio x Pack  | Peso Neto |","background-color:#1B2631; color:#fff; padding: 5px 10px;");
-                
-/* contador = 0;                
- while (contador < galletas.length) {
-    
-    contador%2==0? (css="background-color:#1F618D; color:#fff; padding: 5px 10px;")
-    : (css="background-color:#2874A6 ; color:#fff; padding: 5px 10px;")
-
-    console.log("%c|   "+galletas[contador]+
-                "  |          "+unidades[contador]+
-                "       |       "+precio[contador]+
-                "       |       "+gramos[contador]+
-                "   |",css
-                );
-    
-    contador++  
- } */
-
+ 
  mostrarTabla(galletas,unidades,precio,gramos)
+ console.log("\n");
 
 const posicionCara = minYMax(precio,1)
 console.log("La galleta más cara es ",galletas[posicionCara]," que cuesta $",precio[posicionCara])
@@ -79,45 +64,12 @@ console.log("La galleta más barata por gramos es ",galletas[masBaratoPorGramos]
 console.log("\n Lista de precios en Dólares de fecha 18/10/2023:");
 console.log("%c|    Galletas   |  Unidades x Pack | Dólar Oficial  | Dólar Blue |","background-color:#1B2631; color:#fff; padding: 5px 10px;");
 
-/* indice = 0
-while (indice < galletas.length) {
-    
-    indice%2==0? (css="background-color:#1F618D; color:#fff; padding: 5px 10px;")
-    : (css="background-color:#2874A6 ; color:#fff; padding: 5px 10px;")
-
-    console.log("%c|   "+galletas[indice]+
-                "  |          "+unidades[indice]+
-                "       |       "+conversion(precio[indice]).toPrecision(3)+
-                "     |     "+conversion(precio[indice],1).toPrecision(3)+
-                "   |",css
-                );
-    
-    indice++  
- } */
- mostrarTabla(galletas,unidades,precio,precio,1,0,2023,1,2023)
+mostrarTabla(galletas,unidades,precio,precio,1,0,2023,1,2023)
 
  console.log("\n Lista de precios en Pesos de hace 5 y 10 años:");
 console.log("%c|    Galletas   |  Unidades x Pack | Precio 2013  | Precio 2018 |","background-color:#1B2631; color:#fff; padding: 5px 10px;");
-/*
-indice = 0
- while (indice < galletas.length) {
-    
-    indice%2==0? (css="background-color:#1F618D; color:#fff; padding: 5px 10px;")
-    : (css="background-color:#2874A6 ; color:#fff; padding: 5px 10px;")
 
-    console.log("%c|   "+galletas[indice]+
-                "  |          "+unidades[indice]+
-                "       |       "+conversion(conversion(precio[indice]),0,2013).toPrecision(3)+
-                "     |     "+conversion(conversion(precio[indice]),0,2018).toPrecision(3)+
-                "   |",css
-                );
-    
-    indice++  
- }
- */
- mostrarTabla(galletas,unidades,precio,precio,2,0,2013,0,2018)
-
-
+mostrarTabla(galletas,unidades,precio,precio,2,0,2013,0,2018)
 
 }
 
