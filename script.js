@@ -48,16 +48,16 @@ console.log("%c|    Galletas   |  Unidades x Pack | Precio x Pack  | Peso Neto |
  mostrarTabla(galletas,unidades,precio,gramos)
  console.log("\n");
 
-const posicionCara = minYMax(precio,1)
+const posicionCara = relaciónValorPrecio(precio,1)
 console.log("La galleta más cara es ",galletas[posicionCara]," que cuesta $",precio[posicionCara])
  
-const posicionBarata = minYMax(precio,0)
+const posicionBarata = relaciónValorPrecio(precio,0)
 console.log("La galleta más barata es ",galletas[posicionBarata]," que cuesta $",precio[posicionBarata])
 
-const masBaratoPorUnidad = barataOCaro(precio,unidades,0)
+const masBaratoPorUnidad = relaciónValorPrecio(precio,0,unidades)
 console.log("La galleta más barata por unidad es ",galletas[masBaratoPorUnidad]," que cuesta $",precio[masBaratoPorUnidad]/unidades[masBaratoPorUnidad]," cada unidad.")
 
-const masBaratoPorGramos = barataOCaro(precio,gramos,0)
+const masBaratoPorGramos = relaciónValorPrecio(precio,0,gramos)
 console.log("La galleta más barata por gramos es ",galletas[masBaratoPorGramos]," que cuesta $",(precio[masBaratoPorGramos]/gramos[masBaratoPorGramos]).toPrecision(3)," por gramo.")
 
 
@@ -111,44 +111,25 @@ const mostrarTabla = (array,array2,array3,array4,convertir=0,tipo1=0,periodo1=0,
 }
 
 
-const minYMax = (array,operacion = 0 )=>{
-    
+const relaciónValorPrecio = (precio,operacion=0,array = [])=>{
     operacion !== 1 &&
     operacion !== 0 && (operacion = 0)
 
     let contador = 0;
     let posicion = 0;
     let valor = 0;
-   
-    while (contador < array.length) {
-
+    let datosArray = 0;
+    while (contador < precio.length) {
+        
+        array.length !== 0 ? (datosArray = precio[contador]/array[contador])
+        : (datosArray =  precio[contador]);
+        
         operacion === 1 
-        ? valor < array[contador] && (valor = array[contador],posicion = contador)
-        : valor === 0 ? (valor = array[contador],posicion = contador) : valor > array[contador] &&
-        (valor = array[contador],posicion = contador);
-    contador++
-    }
-
-    return posicion;
-}
-
-const barataOCaro = (precio,array,operacion=0)=>{
-
-    operacion !== 1 &&
-    operacion !== 0 && (operacion = 0)
-    
-
- let contador = 0;
- let precioPorUnidad = 0;
-    while (contador < array.length) {
-
-        datosArray = precio[contador]/array[contador] 
-
-        operacion === 1 
-        ?  precioPorUnidad < datosArray && ( precioPorUnidad =  datosArray, posicion = contador)
-        :  precioPorUnidad === 0 ? ( precioPorUnidad = datosArray,posicion = contador)
-        :  precioPorUnidad > datosArray && (precioPorUnidad = datosArray,posicion = contador);
-    contador++
+        ? valor < datosArray && (valor = datosArray, posicion = contador)
+        : valor === 0 ? (valor = datosArray, posicion = contador) 
+        : valor > datosArray && (valor = datosArray, posicion = contador);
+        
+        contador++
     }
     return posicion;
 }
